@@ -1,6 +1,6 @@
 import eu.bitm.NominatimReverseGeocoding.Address;
 
-public class Main{
+public class Address_Main{
     public static void main(String[] args) {
         Address a;
         NominatimReverseGeocodingJAPI nominatim1 = new NominatimReverseGeocodingJAPI(); //create instance with default zoom level (18)
