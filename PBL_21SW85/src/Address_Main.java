@@ -1,5 +1,5 @@
-// import eu.bitm.NominatimReverseGeocoding.Address;
-// import eu.bitm.NominatimReverseGeocoding.NominatimReverseGeocodingJAPI;
+import eu.bitm.NominatimReverseGeocoding.Address;
+import eu.bitm.NominatimReverseGeocoding.NominatimReverseGeocodingJAPI;
 import eu.bitm.NominatimReverseGeocoding.*;
 
 class Address_Main{
@@ -10,7 +10,7 @@ class Address_Main{
 
         NominatimReverseGeocodingJAPI nominatim2 = new NominatimReverseGeocodingJAPI(18); //create instance with given zoom level
 
-        a=nominatim1.getAdress(20.13,121.461); //returns Address object for the given position
+        a=nominatim1.getAdress(1.863,127.352); //returns Address object for the given position
         
         System.out.println(a);
 
