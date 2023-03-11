@@ -1,0 +1,30 @@
+I have address of upto 11k rows and now i have to work on this.
+
+Step 1: Collection of years max 52 years or usko csv main year se according city,country,and magnitude save krana hy.
+		52 years main her year ki alaag hoga data
+
+Step 2: Queue banani each collection ki hy jis main magnitude hr collection se read kr wa kr max of magnitude find krna hy 		or usko method main save karani hy or phir particular year ki collection ek highest magnitude return krega.
+
+Step 3: Stack banani hy each collection ki which saves earthquakes in stack styles and having most recent one on top.
+		ek method banana hy jo recent one yani index 0 pe jo mgntide hy return kre each collection ki.
+
+Step 4: Linkedlist banani hy each collection ki jo k stack k recentone() method se data each collection main store kre.
+
+Step 5: counter chalana hy each collection main per country or count calculate kr k most vulnerable country batani hy.
+
+Step 6: 2005 se 2015 k collection k highest main se bhi highest find krna hy. (store kr walo each collection ka highest 		one method use kr k arraylist main phir us main se highest problem ka answer hy.)
+
+Step 7: stack use kro or each country se access kr k index number recent dekh kr return krao.
+
+Step 8: Stack use kro or loop chalao or or lowest index number return karao jahan magnitude above 6 ho.
+
+Step 9: Jo smajh na aye use GOOGLE, STACK OVERFLOW , GITHUB , KAGGLE, LLETCODE, CHAT GPT
+
+Step 10: Phir bhi smmjh na aye to Lahad, Abbas, Asad ko msg kro.
+
+
+			*****		ARKG 🙏	*******
+
+
+
+
