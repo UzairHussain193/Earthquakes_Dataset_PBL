@@ -6,5 +6,6 @@
         "e:\\2. Muet material\\3. 3rd Sem SW\\1. DSA\\4. DSA_PBL_SEM_ASSIGNMENT\\NominatimReverseGeocodingJAPI\\reverseGeocoding.jar",
         "e:\\2. Muet material\\3. 3rd Sem SW\\1. DSA\\4. DSA_PBL_SEM_ASSIGNMENT\\NominatimReverseGeocodingJAPI\\java-json.jar",
         "e:\\2. Muet material\\3. 3rd Sem SW\\1. DSA\\4. DSA_PBL_SEM_ASSIGNMENT\\opencsv-5.7.1.jar"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

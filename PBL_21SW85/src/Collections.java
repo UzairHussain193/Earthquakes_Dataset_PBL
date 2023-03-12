@@ -8,18 +8,18 @@ import java.util.Scanner;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-class Node{
-    Node next;
+class LinkedNode{
+    LinkedNode next;
     int year;
     String country,state;
     float magnitude;
     Object date;
     Object time;
 
-    Node(){
+    LinkedNode(){
         
     }
-    public Node(int year, String country,String state, Object date, float magnitude, Object time){
+    public LinkedNode(int year, String country,String state, Object date, float magnitude, Object time){
         this.year=year;
         this.country=country;
         this.magnitude=magnitude;
@@ -33,8 +33,8 @@ class Node{
 }
 
 class Collections {
-    ArrayList<Node> earthquake = new ArrayList<Node>();
-    LinkedQueue lq= new LinkedQueue();
+    ArrayList<LinkedNode> earthquake = new ArrayList<>();
+    // LinkedQueue lq= new LinkedQueue();
     float[] highestmagnitudes;
     String[] country;
     int[] years;
@@ -43,16 +43,16 @@ class Collections {
     int Year;
     int count=0;
     int startyear;
-    Node head;
+    StackNode head;
     String filepath= "E:\\2. Muet material\\3. 3rd Sem SW\\1. DSA\\4. DSA_PBL_SEM_ASSIGNMENT\\PBL_21SW085\\PBL_21SW85\\Cleaned_Data.csv";
     String line;
     String splitBy = ",";
     String add;
     float magnitude;
     
-            // Define an ArrayList to store the nodes
+    // Define an ArrayList to store the nodes
        
-        // Read the file and extract the year from the date in column 1
+    // Read the file and extract the year from the date in column 1
         try {
             BufferedReader br = new BufferedReader(new FileReader(filepath));
             br.readLine();      // reada header line
@@ -70,22 +70,22 @@ class Collections {
                 if(earthquake.size()!=0){
                     for(int i=0;i<earthquake.size();i++){
                         if(Year==(earthquake.get(i).year)){
-                            Node temp = earthquake.get(i);
+                            LinkedNode temp = earthquake.get(i);
                             while(temp.next!=null){
                                 temp=temp.next;
                             }
-                            temp.next= new Node(Year, parts[2], parts[3], parts[0], magnitude, parts[0]);
+                            temp.next= new LinkedNode(Year, parts[2], parts[3], parts[0], magnitude, parts[0]);
                             continue;
                         }
                         else if(i==earthquake.size()-1){
-                            Node temp= new Node(Year, parts[2], parts[3], parts[0], magnitude, parts[0]);
+                            LinkedNode temp= new LinkedNode(Year, parts[2], parts[3], parts[0], magnitude, parts[0]);
                             earthquake.add(temp);
                             break;
                         }
                     }
                 }
                 else if(earthquake.size()==0){
-                    Node temp = new Node(Year, parts[2], parts[3], parts[0], magnitude, parts[0]);
+                    LinkedNode temp = new LinkedNode(Year, parts[2], parts[3], parts[0], magnitude, parts[0]);
                     earthquake.add(temp);
                 }   
             }
@@ -102,9 +102,9 @@ class Collections {
 
         System.out.print("Enter Year :  ");
         Year=s.nextInt()-1965;
-        // for(int i=0;i<52;i++){       by using line 107, 108 we can see each year collection with thier count
+        // for(int i=0;i<52;i++){     //  by using line 107, 108 we can see each year collection with thier count
         // Node n=earthquake.get(i);
-        Node n=earthquake.get(Year);
+        LinkedNode n=earthquake.get(Year);
         int x=1;
         while(n!=null){
             System.out.println(x + " : " + n.time + " : " + n.year + " : " + n.country + " : " + n.state + " : " + n.magnitude);
@@ -127,7 +127,7 @@ class Collections {
     
         // Loop through each year and find the highest magnitude for that year
         for(int i = 0; i < earthquake.size(); i++) {
-            Node n = earthquake.get(i);
+            LinkedNode n = earthquake.get(i);
             while(n != null) {
                 float high=highestmagnitudes[n.year-1965];
                 if(n.magnitude > highestmagnitudes[n.year - 1965]) { // Update highest magnitude for the year
@@ -141,7 +141,7 @@ class Collections {
         }
         
         for(int i = 0; i < 52; i++,j++) {
-            Node n = earthquake.get(i);
+            LinkedNode n = earthquake.get(i);
             // System.out.println("Highest magnitude for each year -->  "+(i + 1965)  +  " : " + highestmagnitudes[i]);
             System.out.println(years[i]  + " : " + country[i] + " : " + highestmagnitudes[i]);
         }
@@ -149,11 +149,11 @@ class Collections {
         // return highestmagnitudes;
     }
 
-    void addFromArray(int[] years, String[] countries,float[] magnitudes ) {
-        for (int i = 0; i < magnitudes.length; i++) {
-            lq.addDetails(years[i], countries[i], magnitudes[i]);
-        }
-    }
+    // void addFromArray(int[] years, String[] countries,float[] magnitudes ) {
+    //     for (int i = 0; i < magnitudes.length; i++) {
+    //         lq.addDetails(years[i], countries[i], magnitudes[i]);
+    //     }
+    // }
 
     
     
@@ -161,7 +161,7 @@ class Collections {
         int size(){
             return earthquake.size();
         }
-        Node get(int index){
+        LinkedNode get(int index){
             return earthquake.get(index);
         }
 
