@@ -62,7 +62,7 @@ class Collections {
                 add="";
                 String[] parts = line.split(splitBy); // use comma as separator
                 magnitude= Float.parseFloat(parts[4]);  // reads magnitude column
-                Year = Integer.parseInt(parts[0].substring(parts[0].length()-4));   //reads year from date column
+                Year = Integer.parseInt(parts[0].substring(6));   //reads year from date column
                 
                 // add data in collection
                 if(earthquake.size()!=0){
@@ -175,5 +175,9 @@ class Collections {
     }
     LinkedNode get(int index){
         return earthquake.get(index);
+    }
+    public static void main(String[] args) throws IOException {
+        Collections a = new Collections();
+        a.display_All_Collections();
     }
 }
