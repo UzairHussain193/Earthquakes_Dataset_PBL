@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 
-class StackNode{
+class StackNode{        // node to store stacks data
     int year;
     int size;
     String country;
@@ -22,7 +22,7 @@ class StackNode{
 
     }
 
-    StackNode(int year,String country,float magnitude){
+    StackNode(int year,String country,float magnitude){     // constructor
         this.year=year;
         this.country=country;
         this.magnitude=magnitude;
@@ -33,14 +33,11 @@ class StackNode{
     }
 
     public void push1(int year2, String country2, float magnitude2) {
-
         this.year=year2;
         this.country=country2;
         this.magnitude=magnitude2;
     }
-    // public int size(){
-    //     return size;
-    // }
+    // displays elements in node
     public void display3() {
         System.out.println( year +" : "+ country+" : "+ magnitude);
     }
@@ -50,12 +47,9 @@ class StackNode{
 class Stacks{
 
     StackNode head;
-    ArrayList<Stacks> countries= new ArrayList<>();
+    ArrayList<Stacks> countries= new ArrayList<>();         // arraylist of stacks to store country wise earthquakes    
     int size;
     
-    
-    
-
     public void push2(int year,String Country, float magnitude) {
         StackNode temp = new StackNode( year, Country, magnitude);
         temp.next=head;
@@ -84,8 +78,6 @@ class Stacks{
         String add;
         float magnitude;
     
-        // Define an ArrayList to store the nodes
-       
         // Read the file and extract the year from the date in column 1
         try {
             BufferedReader br = new BufferedReader(new FileReader(filepath));
@@ -102,26 +94,21 @@ class Stacks{
                 country= parts[2];
               
                 if(countries.size()!=0){
-                    //System.out.println("In If 1");
                     for(int i=0;i<countries.size();i++){
                         if(countries.get(i).head.country.equals(country)){
                             countries.get(i).push2(Year, country, magnitude);
-                            // System.out.println(countries.get(i).head.country);
                             break;
                         }
                         else if (i==countries.size()-1){
-                            // System.out.println("in Else");
                             Stacks temp = new Stacks();
                             temp.push2(Year, country, magnitude);
                             countries.add(temp);
-                            // System.out.println(countries.get(i).head.country);
                             break;
                         }
                     }
                     continue;
                 }
                 else{
-                    //System.out.println("In If 2");
                     Stacks temp=new Stacks();
                     temp.push2(Year, country, magnitude);
                     countries.add(temp);
@@ -137,13 +124,13 @@ class Stacks{
         }
     }
     
+    // method to print stacks recent ones first but all
     void recent_stacks(){
         try {
             CountryStacks();
         } catch (Exception e) {
             // TODO: handle exception
         }
-        
         StackNode t=countries.get(0).head;
         StackNode r=new StackNode(t.year, t.country, t.magnitude);
         StackNode temp=r;
@@ -158,6 +145,8 @@ class Stacks{
             z.display3();            
         }
     }
+
+    // method to print stacks yearly but recent one first
     void display_Yearly_Stacks(){
         int num=0;
         try {
@@ -187,6 +176,8 @@ class Stacks{
             }
         }
     }
+
+    // method to print stacks recent but having magnitude above 6
     void recent_above_6(){
         int num=1;
         try {
@@ -213,10 +204,8 @@ class Stacks{
             }
         }
     }
-    public float average(float quantity){
-        float avg=(quantity/52);
-        return  avg;
-    }
+   
+    // method to vulnerablitlity of coutnries
     void average_earthquake(){
         int count=0;
         String country_vulnerable = "";
@@ -251,6 +240,7 @@ class Stacks{
         }
         
     }
+    // method to print 5 recent stacks of each country
     void display_recent_5(){
         int num=1;
         try {
@@ -278,19 +268,6 @@ class Stacks{
                 }
             }
         }
-    }
-    public static void main(String[] args) throws IOException {
-        
-        Stacks st = new Stacks();
-        st.CountryStacks();
-        
-        // st.display_recent_5();
-        // st.stacks_by_country();
-        // st.display_Yearly_Stacks();
-        st.average_earthquake();
-        // st.recent();
-        // st.recent_above_6();
- 
     }
 }
 

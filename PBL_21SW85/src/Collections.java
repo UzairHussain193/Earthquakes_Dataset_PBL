@@ -100,8 +100,7 @@ class Collections {
 
         System.out.print("Enter Year :  ");
         Year=s.nextInt()-1965;
-        // for(int i=0;i<52;i++){     //  by using line 107, 108 we can see each year collection with thier count
-        // Node n=earthquake.get(i);
+        
         LinkedNode n=earthquake.get(Year);
         int x=1;
         while(n!=null){
@@ -110,16 +109,9 @@ class Collections {
             n=n.next;
             x++;
         }
-    // }
     }
     void display_All_Collections(){
-        int Year;
-        Scanner s=new Scanner(System.in);
-
-        // System.out.print("Enter Year :  ");
-        // Year=s.nextInt()-1965;
         for(int i=0;i<52;i++){     //  by using line 107, 108 we can see each year collection with thier count
-        // Node n=earthquake.get(i);
         LinkedNode n=earthquake.get(i);
         int x=1;
         while(n!=null){
@@ -147,7 +139,6 @@ class Collections {
 
         return Choice;
     }
-    // float[] highest() {
     void highest() {   
         int j=0; 
         highestmagnitudes = new float[52]; // Array to store highest magnitudes
@@ -169,44 +160,20 @@ class Collections {
                     years[i]= n.year;
                 }
                 n = n.next;
-                // System.out.println(high);
             }
         }
         
         for(int i = 0; i < 52; i++,j++) {
             LinkedNode n = earthquake.get(i);
-            // System.out.println("Highest magnitude for each year -->  "+(i + 1965)  +  " : " + highestmagnitudes[i]);
             System.out.println(years[i]  + " : " + country[i] + " : " + highestmagnitudes[i]);
         }
         System.out.println(j);
-        // return highestmagnitudes;
     }
 
-    // void addFromArray(int[] years, String[] countries,float[] magnitudes ) {
-    //     for (int i = 0; i < magnitudes.length; i++) {
-    //         lq.addDetails(years[i], countries[i], magnitudes[i]);
-    //     }
-    // }
-
-    
-    
-    
-        int size(){
-            return earthquake.size();
-        }
-        LinkedNode get(int index){
-            return earthquake.get(index);
-        }
-
-
-    public static void main(String[] args) throws IOException {
-        Collections list = new Collections();
-
-      
-        // list.display_Collections();     // to see yearly collection
-        list.display_All_Collections();
-        // list.highest();
-        
-        
+    int size(){
+        return earthquake.size();
+    }
+    LinkedNode get(int index){
+        return earthquake.get(index);
     }
 }
