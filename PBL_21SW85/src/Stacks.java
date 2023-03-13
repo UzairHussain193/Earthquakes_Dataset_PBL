@@ -136,8 +136,8 @@ class Stacks{
             e.printStackTrace();
         }
     }
- 
-    void display_Yearly_Stacks(){
+    
+    void recent_stacks(){
         try {
             CountryStacks();
         } catch (Exception e) {
@@ -156,6 +156,35 @@ class Stacks{
 
         for(StackNode z=r;z!=null;z=z.next){
             z.display3();            
+        }
+    }
+    void display_Yearly_Stacks(){
+        int num=0;
+        try {
+            CountryStacks();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
+        StackNode t=countries.get(0).head;
+        StackNode r=new StackNode(t.year, t.country, t.magnitude);
+        StackNode temp=r;
+       
+        for(int i=1;i<countries.size();i++){
+            StackNode x=countries.get(i).head;
+            temp.next=new StackNode(x.year, x.country, x.magnitude);
+            temp=temp.next;
+        }
+
+        for(int i=0;i<countries.size();i++){
+            StackNode a = countries.get(i).head;
+            for(num=0;num<countries.size();num++){
+                a.display3();
+                a=a.next;
+                if(a==null){
+                   break;
+                }
+            }
         }
     }
     void recent_above_6(){
@@ -217,7 +246,6 @@ class Stacks{
             if(a==null){
                 break;
             }   
-            count/=2;
             result=(float)(count/52);
             System.out.println(country_vulnerable  + " : "+count + " : " + result );
         }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-class LinkedNode{
+class LinkedNode{           // node class use in collections
     LinkedNode next;
     int year;
     String country,state;
@@ -19,6 +19,7 @@ class LinkedNode{
     LinkedNode(){
         
     }
+    // constructor to add data
     public LinkedNode(int year, String country,String state, Object date, float magnitude, Object time){
         this.year=year;
         this.country=country;
@@ -27,31 +28,30 @@ class LinkedNode{
         this.time=time;
         this.date=date;
     }
+    //method to display element in nodes
     public String display(){
         return year +" , "+country + " , " + state+" , "+ date + " , " + magnitude + " , " + time;
     }
 }
 
 class Collections {
-    ArrayList<LinkedNode> earthquake = new ArrayList<>();
-    // LinkedQueue lq= new LinkedQueue();
+    ArrayList<LinkedNode> earthquake = new ArrayList<>();       // collection to store earthquakes yearly
+    
+    // arrays to store data from columns and parsing
     float[] highestmagnitudes;
     String[] country;
     int[] years;
     
+    // contructor of collection class to initialize process by just calling
     Collections() throws IOException{
     int Year;
     int count=0;
-    int startyear;
-    StackNode head;
     String filepath= "E:\\2. Muet material\\3. 3rd Sem SW\\1. DSA\\4. DSA_PBL_SEM_ASSIGNMENT\\PBL_21SW085\\PBL_21SW85\\Cleaned_Data.csv";
     String line;
     String splitBy = ",";
     String add;
     float magnitude;
-    
-    // Define an ArrayList to store the nodes
-       
+   
     // Read the file and extract the year from the date in column 1
         try {
             BufferedReader br = new BufferedReader(new FileReader(filepath));
@@ -61,12 +61,10 @@ class Collections {
                
                 add="";
                 String[] parts = line.split(splitBy); // use comma as separator
-               
-                // ystem.out.println(parts[0] + parts[2]);
-                magnitude= Float.parseFloat(parts[4]);
-                Year = Integer.parseInt(parts[0].substring(parts[0].length()-4));
-                // System.out.println(count +" : "+ String.valueOf(year));
-
+                magnitude= Float.parseFloat(parts[4]);  // reads magnitude column
+                Year = Integer.parseInt(parts[0].substring(parts[0].length()-4));   //reads year from date column
+                
+                // add data in collection
                 if(earthquake.size()!=0){
                     for(int i=0;i<earthquake.size();i++){
                         if(Year==(earthquake.get(i).year)){
@@ -113,6 +111,24 @@ class Collections {
             x++;
         }
     // }
+    }
+    void display_All_Collections(){
+        int Year;
+        Scanner s=new Scanner(System.in);
+
+        // System.out.print("Enter Year :  ");
+        // Year=s.nextInt()-1965;
+        for(int i=0;i<52;i++){     //  by using line 107, 108 we can see each year collection with thier count
+        // Node n=earthquake.get(i);
+        LinkedNode n=earthquake.get(i);
+        int x=1;
+        while(n!=null){
+            System.out.println(x + " : " + n.time + " : " + n.year + " : " + n.country + " : " + n.state + " : " + n.magnitude);
+            n.display();
+            n=n.next;
+            x++;
+        }
+    }
     }
     public int menu(){
         Scanner s = new Scanner(System.in);
@@ -187,7 +203,8 @@ class Collections {
         Collections list = new Collections();
 
       
-        list.display_Collections();     // to see yearly collection
+        // list.display_Collections();     // to see yearly collection
+        list.display_All_Collections();
         // list.highest();
         
         
