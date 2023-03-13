@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Stack;
+
 
 class StackNode{
     int year;
+    int size;
     String country;
     float magnitude;
 
@@ -35,24 +38,23 @@ class StackNode{
         this.country=country2;
         this.magnitude=magnitude2;
     }
-
+    // public int size(){
+    //     return size;
+    // }
     public void display3() {
         System.out.println( year +" : "+ country+" : "+ magnitude);
     }
 
 }
 
-
 class Stacks{
 
     StackNode head;
-    //Node top;
-    int size;
-
     ArrayList<Stacks> countries= new ArrayList<>();
-    ArrayList<Float> magnitudes = new ArrayList<>();
-    ArrayList<Integer> year= new ArrayList<>();
-
+    int size;
+    
+    
+    
 
     public void push2(int year,String Country, float magnitude) {
         StackNode temp = new StackNode( year, Country, magnitude);
@@ -73,9 +75,7 @@ class Stacks{
     
     
     public void CountryStacks() throws IOException{
-        // Stacks countryStacks = new Stacks();
-        //Collections col = new Collections();
-
+        
         int Year;
         String country;
         String filepath= "E:\\2. Muet material\\3. 3rd Sem SW\\1. DSA\\4. DSA_PBL_SEM_ASSIGNMENT\\PBL_21SW085\\PBL_21SW85\\Cleaned_Data.csv";
@@ -137,15 +137,17 @@ class Stacks{
         }
     }
  
-    void recent(){
-        StackNode t=countries.get(0).head;
-        StackNode r=new StackNode(t.year, t.country, t.magnitude);
-        StackNode temp=r;
+    void display_Yearly_Stacks(){
         try {
             CountryStacks();
         } catch (Exception e) {
             // TODO: handle exception
         }
+        
+        StackNode t=countries.get(0).head;
+        StackNode r=new StackNode(t.year, t.country, t.magnitude);
+        StackNode temp=r;
+       
         for(int i=1;i<countries.size();i++){
             StackNode x=countries.get(i).head;
             temp.next=new StackNode(x.year, x.country, x.magnitude);
@@ -157,14 +159,17 @@ class Stacks{
         }
     }
     void recent_above_6(){
-        StackNode t=countries.get(0).head;
-        StackNode r=new StackNode(t.year, t.country, t.magnitude);
-        StackNode temp=r;
+        int num=1;
         try {
             CountryStacks();
         } catch (Exception e) {
             // TODO: handle exception
         }
+
+        StackNode t=countries.get(0).head;
+        StackNode r=new StackNode(t.year, t.country, t.magnitude);
+        StackNode temp=r;
+       
         for(int i=1;i<countries.size();i++){
             StackNode x=countries.get(i).head;
             temp.next=new StackNode(x.year, x.country, x.magnitude);
@@ -173,7 +178,9 @@ class Stacks{
         System.out.println("\n\tPrinting magnitudes from country stacks having magnitude above 6.\n");
         for(StackNode z=r;z!=null;z=z.next){
             if(z.magnitude>6 && z.next!=null){
-            z.display3();
+                System.out.print(num+ " : ");
+                z.display3();
+                num++;
             }
         }
     }
@@ -182,58 +189,66 @@ class Stacks{
         return  avg;
     }
     void average_earthquake(){
-        float num=0;
+        int count=0;
+        String country_vulnerable = "";
         float result=0;
-        StackNode t=countries.get(0).head;
-        StackNode r=new StackNode(t.year, t.country, t.magnitude);
-        StackNode temp=r;
         try {
             CountryStacks();
         } catch (Exception e) {
             // TODO: handle exception
         }
+        StackNode t=countries.get(0).head;
+        StackNode r=new StackNode(t.year, t.country, t.magnitude);
+        StackNode temp=r;
+    
         for(int i=1;i<countries.size();i++){
             StackNode x=countries.get(i).head;
             // x.display3();
             temp.next=new StackNode(x.year, x.country, x.magnitude);
             temp=temp.next;
         }
-        
-        for(StackNode z=r;z!=null;z=z.next){
-            for(int i=0;i<countries.size();i++){
-                if(countries.get(i).head.country==z.country){
-                    z.display3();  
-                    num++;          
-                }   
-            }
+        for(int i=0;i<countries.size();i++){
+            count=0;
+            // System.out.println(countries.get(i).size);
+            StackNode a = countries.get(i).head;
+            country_vulnerable=a.country;
+            a=a.next;
+            count=countries.get(i).size;                
+            if(a==null){
+                break;
+            }   
+            count/=2;
+            result=(float)(count/52);
+            System.out.println(country_vulnerable  + " : "+count + " : " + result );
         }
-        System.out.println(num);   
+        
     }
     void display_recent_5(){
-        int num=0;
-        StackNode t=countries.get(0).head;
-        StackNode r=new StackNode(t.year, t.country, t.magnitude);
-        StackNode temp=r;
+        int num=1;
         try {
             CountryStacks();
         } catch (Exception e) {
             // TODO: handle exception
         }
+        StackNode t=countries.get(0).head;
+        StackNode r=new StackNode(t.year, t.country, t.magnitude);
+        StackNode temp=r;
+        
         for(int i=1;i<countries.size();i++){
             StackNode x=countries.get(i).head;
             // x.display3();
             temp.next=new StackNode(x.year, x.country, x.magnitude);
             temp=temp.next;
         }
-        
-        for(int i =0;i<countries.size();i++){
-            StackNode a= countries.get(i).head;
-            String temp2=a.country;
-            if(countries.get(i).head.country==temp2 && num<5){
+        for(int i=0;i<countries.size();i++){
+            StackNode a = countries.get(i).head;
+            for(num=0;num<6;num++){
                 a.display3();
-                num++;
+                a=a.next;
+                if(a==null){
+                   break;
+                }
             }
-            a=a.next; 
         }
     }
     public static void main(String[] args) throws IOException {
@@ -242,6 +257,8 @@ class Stacks{
         st.CountryStacks();
         
         // st.display_recent_5();
+        // st.stacks_by_country();
+        // st.display_Yearly_Stacks();
         st.average_earthquake();
         // st.recent();
         // st.recent_above_6();

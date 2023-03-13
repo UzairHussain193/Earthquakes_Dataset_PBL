@@ -32,7 +32,7 @@ class LinkedQueue implements Queue{
             prev=p;
         }
         public void display(){
-            System.out.println( year +" , "+country + " , " + magnitude);
+            System.out.println( year +" : "+country + " : " + magnitude);
         }
     }
     
@@ -53,6 +53,7 @@ class LinkedQueue implements Queue{
     }
     
     void  highest() throws IOException { 
+        int num=1;
         LinkedQueue q=new LinkedQueue();
         int year=0;  
         float highest=0;
@@ -74,16 +75,14 @@ class LinkedQueue implements Queue{
             q.addQueue(year, Country, highest);
         }
         for(DataNode t=q.head.next;t!=q.head;t=t.next){
+                System.out.print(num+ " : ");
                 t.display();
-        }
-        for(DataNode t=q.head.next;t!=q.head;t=t.next){
-            if(t.year>2004 && t.year<2016){
-                t.display();
-            }            
+                num++;
         }
     }
 
-    void  highest2() throws IOException { 
+    void  highest2() throws IOException {
+        int num=1; 
         LinkedQueue q=new LinkedQueue();
         int year=0;  
         float highest=0;
@@ -106,7 +105,9 @@ class LinkedQueue implements Queue{
         }
         for(DataNode t=q.head.next;t!=q.head;t=t.next){
             if(t.year>2004 && t.year<2016){
+                System.out.print(num+ " : ");
                 t.display();
+                num++;
             }            
         }
     }

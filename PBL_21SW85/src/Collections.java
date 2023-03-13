@@ -96,7 +96,7 @@ class Collections {
             e.printStackTrace();
         }
     }
-    void display(){
+    void display_Collections(){
         int Year;
         Scanner s=new Scanner(System.in);
 
@@ -113,6 +113,23 @@ class Collections {
             x++;
         }
     // }
+    }
+    public int menu(){
+        Scanner s = new Scanner(System.in);
+        System.out.println("\n\tPBL Tasks ");
+        System.out.println("1. Step 1 (Yearly Collections of Earthquakes.) ");
+        System.out.println("2. Step 2 (Yearly Queue of Earthquakes.) ");
+        System.out.println("3. Step 3 (Country Stacks of Earthquakes.) ");
+        System.out.println("4. Step 4 (Recent Earthquake of each year.) ");
+        System.out.println("5. Problem 1 (Most Vulnerable Country.) ");
+        System.out.println("6: Problem 2 (Biggest Earthquakes from 2005 to 2015.) ");
+        System.out.println("7: Problem 3 (Recent 5 Earthquakes.) ");
+        System.out.println("8: Problem 4 (Most recent Earthquakes with magnitude above 6.) ");
+        System.out.println("0. Exit");
+        System.out.print("\nEnter Your Choice: ");
+        int Choice=s.nextInt();
+
+        return Choice;
     }
     // float[] highest() {
     void highest() {   
@@ -170,7 +187,7 @@ class Collections {
         Collections list = new Collections();
 
       
-        list.display();     // to see yearly collection
+        list.display_Collections();     // to see yearly collection
         // list.highest();
         
         
