@@ -90,7 +90,7 @@ class Stacks{
                
                 
                 magnitude= Float.parseFloat(parts[4]);
-                Year = Integer.parseInt(parts[0].substring(parts[0].length()-4));
+                Year = Integer.parseInt(parts[0].substring(6));
                 country= parts[2];
               
                 if(countries.size()!=0){
@@ -116,7 +116,6 @@ class Stacks{
                 }
                   
             }
-
         br.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found: ");
@@ -165,14 +164,17 @@ class Stacks{
             temp=temp.next;
         }
 
+        int c=1;
         for(int i=0;i<countries.size();i++){
             StackNode a = countries.get(i).head;
-            for(num=0;num<countries.size();num++){
+            while(a!=null){
+                if(c>150){
+                    break;
+                }
+                System.out.print(c+". ");
                 a.display3();
                 a=a.next;
-                if(a==null){
-                   break;
-                }
+                c++;
             }
         }
     }
@@ -207,9 +209,9 @@ class Stacks{
    
     // method to vulnerablitlity of coutnries
     void average_earthquake(){
-        int count=0;
+        float count=0;
         String country_vulnerable = "";
-        float result=0;
+        double result=0;
         try {
             CountryStacks();
         } catch (Exception e) {
@@ -219,12 +221,12 @@ class Stacks{
         StackNode r=new StackNode(t.year, t.country, t.magnitude);
         StackNode temp=r;
     
-        for(int i=1;i<countries.size();i++){
-            StackNode x=countries.get(i).head;
-            // x.display3();
-            temp.next=new StackNode(x.year, x.country, x.magnitude);
-            temp=temp.next;
-        }
+        // for(int i=1;i<countries.size();i++){
+        //     StackNode x=countries.get(i).head;
+        //     // x.display3();
+        //     temp.next=new StackNode(x.year, x.country, x.magnitude);
+        //     temp=temp.next;
+        // }
         for(int i=0;i<countries.size();i++){
             count=0;
             // System.out.println(countries.get(i).size);
@@ -235,7 +237,7 @@ class Stacks{
             if(a==null){
                 break;
             }   
-            result=(float)(count/52);
+            result=(count/52);
             System.out.println(country_vulnerable  + " : "+count + " : " + result );
         }
         
@@ -268,6 +270,12 @@ class Stacks{
                 }
             }
         }
+    }
+    public static void main(String[] args) {
+        Stacks s = new Stacks();
+        // s.display_Yearly_Stacks();
+        // s.average_earthquake();
+        s.recent_above_6();
     }
 }
 

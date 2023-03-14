@@ -95,32 +95,37 @@ class Collections {
         }
     }
     void display_Collections(){
+        try {
+            Collections a = new Collections();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         int Year;
         Scanner s=new Scanner(System.in);
 
         System.out.print("Enter Year :  ");
-        Year=s.nextInt()-1965;
+        Year=s.nextInt();
         
-        LinkedNode n=earthquake.get(Year);
+        LinkedNode a = earthquake.get(Year-1965);
         int x=1;
-        while(n!=null){
-            System.out.println(x + " : " + n.time + " : " + n.year + " : " + n.country + " : " + n.state + " : " + n.magnitude);
-            n.display();
-            n=n.next;
+        while(a!=null){
+            System.out.println(x + " : " + a.time + " : " + a.year + " : " + a.country + " : " + a.state + " : " + a.magnitude);
+            a.display();
+            a=a.next;
             x++;
         }
     }
     void display_All_Collections(){
         for(int i=0;i<52;i++){     //  by using line 107, 108 we can see each year collection with thier count
-        LinkedNode n=earthquake.get(i);
-        int x=1;
-        while(n!=null){
-            System.out.println(x + " : " + n.time + " : " + n.year + " : " + n.country + " : " + n.state + " : " + n.magnitude);
-            n.display();
-            n=n.next;
-            x++;
+            LinkedNode n=earthquake.get(i);
+            int x=1;
+            while(n!=null){
+                System.out.println(x + " : " + n.time + " : " + n.year + " : " + n.country + " : " + n.state + " : " + n.magnitude);
+                n.display();
+                n=n.next;
+                x++;
+            }
         }
-    }
     }
     public int menu(){
         Scanner s = new Scanner(System.in);
@@ -178,6 +183,7 @@ class Collections {
     }
     public static void main(String[] args) throws IOException {
         Collections a = new Collections();
-        a.display_All_Collections();
+        // a.display_All_Collections();
+        a.display_Collections();
     }
 }

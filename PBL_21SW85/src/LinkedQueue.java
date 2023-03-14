@@ -75,6 +75,9 @@ class LinkedQueue implements Queue{
             q.addQueue(year, Country, highest);
         }
         for(DataNode t=q.head.next;t!=q.head;t=t.next){
+            if(num>150){
+                break;
+            }
             System.out.print(num+ " : ");
             t.display();
             num++;
@@ -94,7 +97,6 @@ class LinkedQueue implements Queue{
             LinkedNode n = earthquake.get(i);
             highest=0;
             while(n != null) {
-
                 if(n.magnitude > highest) { // Update highest magnitude for the year
                     highest=n.magnitude;
                     Country=n.country;
@@ -108,8 +110,8 @@ class LinkedQueue implements Queue{
             if(t.year>2004 && t.year<2016){
                 System.out.print(num+ " : ");
                 t.display();
-                num++;
-            }            
+                num++;        
+            }    
         }
     }
     // method to display earthquake all yearly
@@ -131,7 +133,7 @@ class LinkedQueue implements Queue{
         }
     }
     public static void main(String[] args) {
-        LinkedQueue a = new LinkedQueue();
-        a.display_All();
+        LinkedQueue q = new LinkedQueue();
+        q.displayFrom_05_15();
     }
 }

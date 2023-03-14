@@ -19,6 +19,7 @@
 //     String csvDelimiter = ","; // or ";" depending on your file
 
 //     int year;
+   
 
 //     try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath));
 //             FileWriter writer = new FileWriter("Cleaned_Data.csv")) {
@@ -39,7 +40,6 @@
 //             // writer.write(System.lineSeparator());
 //             i++;
 //             }
-//             br.close();
 //         } catch (IllegalStateException e) {
 //             e.printStackTrace();
 //         }
